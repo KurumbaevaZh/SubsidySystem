@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SubsidySystem.Migrations.AddUsersTable" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20260414123030_AddUsersTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Migrations.AddApprovedFieldsToPaymentRegistry" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20260414181916_AddApprovedFieldsToPaymentRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Migrations.ApplicationDbContextModelSnapshot" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\ApplicationDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.ApplicationDbContext" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgACAAAQBQAAAAAAAAAACAEIBAUAAAyGAAAAYAAAA=</HashCode>
+      <FileName>Models\ApplicationDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.Category" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAJAAAAEAAAACAAAAAAQCAAAAAAAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.Citizen" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAkCAAQBACgACAGAQAAQAAgAAAAAAiCAAIBQACIg=</HashCode>
+      <FileName>Models\Citizen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.CompensationCalculation" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAEBAggAgAAACAAEAEAAAAAAAAEAAABQBAACgA=</HashCode>
+      <FileName>Models\CompensationCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.FamilyMember" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAEAAAEAACAAAAGAQAQQAAAAAQAAAAAABABAAAgg=</HashCode>
+      <FileName>Models\FamilyMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.Income" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAEAAAAACAAAACAAAQCgAAAIAAAAAAAQAAAAAkA=</HashCode>
+      <FileName>Models\Income.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.IncomeType" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>CAgAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IncomeType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.Payment" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhAAQEAAMACAAAACAQAAAAAgAAABAEAAAAABEAAgA=</HashCode>
+      <FileName>Models\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.PaymentRegistry" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAEEAABQAAAAACAAKAAAAAAAAAAEACACAAAAgAA=</HashCode>
+      <FileName>Models\PaymentRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.Standard" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEEAAAAAAAACAAAACAAIAAAAAAAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Models\Standard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.SubsidyCalculation" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQAgEBAAgAAAAECAgAIAAAABCAQAEAAAAABAAAgA=</HashCode>
+      <FileName>Models\SubsidyCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.User" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAACAIAAECAAAAgAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.UtilityCharge" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAABAAICAAAACIAAAAAAAAAAAAEAAAIABAAAhA=</HashCode>
+      <FileName>Models\UtilityCharge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.UtilityServiceType" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAIAAAAAACAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\UtilityServiceType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.VCalculationSummary" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEBAAAAAAAAAAAAACAAAAAAAAkAQAAABAAAAA=</HashCode>
+      <FileName>Models\VCalculationSummary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Models.VCitizenDetail" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAIAAAEAAQAQAEAAAAAAAAAAAIBAAAAA=</HashCode>
+      <FileName>Models\VCitizenDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Repositories.Repository&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAABEAAAAAAIAEACAEAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Repositories\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Repositories.UserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Services.CalculationService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAIBgAgAAAFAAAAACAAAABAAA=</HashCode>
+      <FileName>Services\ICalculationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Services.SubsidyCalculationResult" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAIAAAAEAAABIAAAAACAwAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ISubsidyCalculationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Services.SubsidyCalculationService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAgAAAAAEAABCAAAIBAABAAIhEAABADAAAABAAA=</HashCode>
+      <FileName>Services\SubsidyCalculationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Services.UserSession" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgAAAAAgAAAAIgCAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Services\UserSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Services.CurrentUser" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAEAAAAAgAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\UserSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.ApproveRegistriesViewModel" Collapsed="true">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAEAAAKAAADAIIAAgEIAAAAAkEAAAQAAAQAAAIAQABI=</HashCode>
+      <FileName>ViewModels\ApproveRegistriesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.BaseViewModel" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.CitizenRegistrationViewModel" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>yAABAAiAQAAASAAAAAAAABACAIAAEAACAAAAAIAEAgQ=</HashCode>
+      <FileName>ViewModels\CitizenRegistrationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.FamilyMemberViewModel" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiABAECEAAAAAAECAAQAIJEAAAACBIgAQiAgAIYAgIQ=</HashCode>
+      <FileName>ViewModels\FamilyMemberViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.IncomeViewModel" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAlAICEAAUAAAAAIAQAIBAAAAACRIIAQHgBEIQAgoY=</HashCode>
+      <FileName>ViewModels\IncomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="6.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.ReportViewModel" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAAEEAAAACEIIAAAQAiAhKAAAEAMBAEIAAJAaQBAAI=</HashCode>
+      <FileName>ViewModels\ReportViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.StandardsViewModel" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAOAAAACAAAECAAAAAAECAIEAADgAAgCgCKAAgII=</HashCode>
+      <FileName>ViewModels\StandardsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.SubsidyCalculationViewModel" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAAEEAAAAAAAAAAAABKAQAQAMBAMRCAJQYQAgAA=</HashCode>
+      <FileName>ViewModels\SubsidyCalculationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.ViewModels.UsersViewModel" Collapsed="true">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAGAgAAGAAAkCAAAAAAECIgAAAIgAAoAhAJSAAII=</HashCode>
+      <FileName>ViewModels\UsersViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.Views.ApproveRegistriesWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ApproveRegistriesWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.CitizenRegistrationWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CitizenRegistrationWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.FamilyMemberWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\FamilyMemberWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.IncomeWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\IncomeWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.LoginWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAIAAIQAAAgQAAAAAAAEBACAAAACAAAABAAA=</HashCode>
+      <FileName>Views\LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.ReportWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ReportWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.StandardsWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\StandardsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.SubsidyCalculationWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SubsidyCalculationWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.Views.UsersWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\UsersWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubsidySystem.App" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubsidySystem.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQAAEIAQAAAAgAAAAgIACBAAgAAgAAIAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="SubsidySystem.Repositories.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAEAAAAAAAAEACAEAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Repositories\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SubsidySystem.Repositories.IUserRepository" Collapsed="true">
+    <Position X="9.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SubsidySystem.Services.ICalculationService" Collapsed="true">
+    <Position X="4" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ICalculationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SubsidySystem.Services.ISubsidyCalculationService" Collapsed="true">
+    <Position X="7.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ISubsidyCalculationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsidySystem", "SubsidySystem\SubsidySystem.csproj", "{0A3C35DF-6B1F-42C7-BF63-0A58E806857F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A3C35DF-6B1F-42C7-BF63-0A58E806857F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A3C35DF-6B1F-42C7-BF63-0A58E806857F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A3C35DF-6B1F-42C7-BF63-0A58E806857F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A3C35DF-6B1F-42C7-BF63-0A58E806857F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {803C9681-94BA-46E7-A4D4-912C2EF099FC}
+	EndGlobalSection
+EndGlobal

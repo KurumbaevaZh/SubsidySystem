@@ -1,0 +1,107 @@
+﻿<Window x:Class="SubsidySystem.Views.SubsidyCalculationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Расчет субсидии" Height="600" Width="700"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Выбор заявителя -->
+        <GroupBox Header="Выбор заявителя" Grid.Row="0" Margin="0,0,0,10">
+            <StackPanel Margin="10">
+                <ComboBox ItemsSource="{Binding Citizens}" 
+                          SelectedItem="{Binding SelectedCitizen}"
+                          DisplayMemberPath="LastName" 
+                          Margin="0,5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Период расчета -->
+        <GroupBox Header="Период расчета" Grid.Row="1" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                <TextBlock Text="Год:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Width="80" Margin="0,0,20,0"/>
+                <TextBlock Text="Месяц:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <ComboBox ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" Width="80"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Кнопка расчета -->
+        <Button Grid.Row="2" Content="Выполнить расчет" Command="{Binding CalculateCommand}" 
+                Width="150" Height="40" Background="#2E7D32" Foreground="White" Margin="0,10"/>
+
+        <!-- Результаты -->
+        <GroupBox Header="Результат расчета" Grid.Row="3" Margin="0,10">
+            <StackPanel Margin="10">
+                <Grid Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Среднедушевой доход:" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CalculationResult.AveragePerCapitaIncome, StringFormat={}{0:N2} руб.}"/>
+                </Grid>
+                <Grid Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Прожиточный минимум семьи:" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CalculationResult.LivingWage, StringFormat={}{0:N2} руб.}"/>
+                </Grid>
+                <Grid Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Поправочный коэффициент:" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CalculationResult.CorrectionFactor, StringFormat={}{0:F4}}"/>
+                </Grid>
+                <Grid Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Стандарт стоимости ЖКУ:" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CalculationResult.HousingStandardCost, StringFormat={}{0:N2} руб.}"/>
+                </Grid>
+                <Grid Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Макс. доля расходов:" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CalculationResult.MaxAllowedShare, StringFormat={}{0:N0}%}"/>
+                </Grid>
+                <Grid Margin="0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Субсидия к выплате:" FontWeight="Bold" Foreground="#2E7D32" FontSize="14"/>
+                    <TextBlock Grid.Column="1" Text="{Binding CalculationResult.SubsidyAmount, StringFormat={}{0:N2} руб.}" 
+                               Foreground="#2E7D32" FontWeight="Bold" FontSize="14"/>
+                </Grid>
+                <Border BorderBrush="#E0E0E0" BorderThickness="1" Padding="10" Margin="0,5">
+                    <TextBlock Text="{Binding CalculationResult.CalculationFormula}" 
+                               FontSize="11" 
+                               Foreground="#555555" 
+                               TextWrapping="Wrap"/>
+                </Border>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Статус -->
+        <TextBlock Grid.Row="5" Text="{Binding StatusMessage}" Foreground="Gray" FontSize="11" TextWrapping="Wrap"/>
+
+       
+    </Grid>
+</Window>
