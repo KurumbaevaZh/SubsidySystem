@@ -96,19 +96,21 @@
                     <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" Width="100"/>
                     <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, StringFormat=dd.MM.yyyy}" Width="100"/>
                     <DataGridTextColumn Header="Родственная связь" Binding="{Binding Relationship}" Width="100"/>
-                    <DataGridTextColumn Header="Учащийся" Binding="{Binding IsStudent}" Width="80">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Text" Value="{Binding IsStudent, StringFormat='{}{0:Да;Нет}'}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn Header="Учащийся" Width="80">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="IsStudent" StringFormat="{}{0:Да;Нет}"/>
+                        </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="СНИЛС" Binding="{Binding Snils}" Width="120"/>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
 
+        <!-- Кнопка Назад -->
+        <Button Grid.Row="3" Content="◀ Назад" Click="BackButton_Click" Width="120" Height="35" Margin="5"
+                Background="#1565C0" Foreground="White" HorizontalAlignment="Center"/>
+
         <!-- Статус -->
-        <TextBlock Grid.Row="3" Text="{Binding StatusMessage}" Foreground="Gray" FontSize="11" TextWrapping="Wrap"/>
+        <TextBlock Grid.Row="3" Text="{Binding StatusMessage}" Foreground="Gray" FontSize="11" TextWrapping="Wrap" Margin="0,40,0,0"/>
     </Grid>
 </Window>

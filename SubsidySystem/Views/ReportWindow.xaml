@@ -32,6 +32,8 @@
                     Background="#2E7D32" Foreground="White"/>
             <Button Content="Экспорт в Excel" Command="{Binding ExportExcelCommand}" Width="150" Height="35" Margin="5"
                     Background="#1565C0" Foreground="White"/>
+            <Button Content="◀ Назад" Click="BackButton_Click" Width="150" Height="35" Margin="5"
+                    Background="#757575" Foreground="White"/>
         </StackPanel>
 
         <!-- Результат -->
@@ -44,8 +46,5 @@
 
         <!-- Статус -->
         <TextBlock Grid.Row="3" Text="{Binding StatusMessage}" Foreground="Gray" FontSize="11" TextWrapping="Wrap"/>
-
-        <!-- Прогресс загрузки -->
-        
     </Grid>
 </Window>

@@ -25,7 +25,7 @@
             </StackPanel>
         </GroupBox>
 
-        <!-- Выбор члена семьи (убрано IsEnabled) -->
+        <!-- Выбор члена семьи -->
         <GroupBox Header="Выбор члена семьи" Grid.Row="1" Margin="0,0,0,10">
             <StackPanel Margin="10">
                 <ComboBox ItemsSource="{Binding FamilyMembers}" 
@@ -34,12 +34,12 @@
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
-            <Run Text="{Binding LastName}"/>
-            <Run Text=" "/>
-            <Run Text="{Binding FirstName}"/>
-            <Run Text=" ("/>
-            <Run Text="{Binding Relationship}"/>
-            <Run Text=")"/>
+                                <Run Text="{Binding LastName}"/>
+                                <Run Text=" "/>
+                                <Run Text="{Binding FirstName}"/>
+                                <Run Text=" ("/>
+                                <Run Text="{Binding Relationship}"/>
+                                <Run Text=")"/>
                             </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -47,7 +47,7 @@
             </StackPanel>
         </GroupBox>
 
-        <!-- Добавление дохода (убрано IsEnabled) -->
+        <!-- Добавление дохода -->
         <GroupBox Header="Добавление дохода" Grid.Row="2" Margin="0,0,0,10">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
@@ -85,7 +85,6 @@
         <GroupBox Header="Список доходов" Grid.Row="3" Margin="0,0,0,10">
             <DataGrid ItemsSource="{Binding Incomes}" AutoGenerateColumns="False"
                       SelectedItem="{Binding SelectedIncome}" CanUserAddRows="False">
-                <!-- Исправленные колонки DataGrid -->
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Вид дохода" Binding="{Binding IncomeType.IncomeTypeName}" Width="150"/>
                     <DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=N2}" Width="100"/>
@@ -95,12 +94,12 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="X" 
-                        Command="{Binding DataContext.DeleteIncomeCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
-                        CommandParameter="{Binding}" 
-                        Background="Red" 
-                        Foreground="White" 
-                        Width="40"
-                        Height="25"/>
+                                        Command="{Binding DataContext.DeleteIncomeCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                        CommandParameter="{Binding}" 
+                                        Background="Red" 
+                                        Foreground="White" 
+                                        Width="40"
+                                        Height="25"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -112,6 +111,8 @@
         <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
             <Button Content="Сохранить все" Command="{Binding SaveAllCommand}" Width="120" Height="35" Margin="5"
                     Background="#2E7D32" Foreground="White"/>
+            <Button Content="◀ Назад" Click="BackButton_Click" Width="120" Height="35" Margin="5"
+                    Background="#1565C0" Foreground="White"/>
         </StackPanel>
 
         <!-- Статус -->

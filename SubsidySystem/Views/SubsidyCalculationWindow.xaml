@@ -98,6 +98,8 @@
                 </Border>
             </StackPanel>
         </GroupBox>
+        <Button Grid.Row="5" Content="◀ Назад" Click="BackButton_Click" Width="120" Height="35" Margin="5"
+                Background="#1565C0" Foreground="White" HorizontalAlignment="Center"/>
 
         <!-- Статус -->
         <TextBlock Grid.Row="5" Text="{Binding StatusMessage}" Foreground="Gray" FontSize="11" TextWrapping="Wrap"/>

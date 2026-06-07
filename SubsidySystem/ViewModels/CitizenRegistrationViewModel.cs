@@ -51,10 +51,9 @@ namespace SubsidySystem.ViewModels
             get => _selectedCategory;
             set
             {
-                if (SetField(ref _selectedCategory, value))
+                if (SetField(ref _selectedCategory, value) && value != null)
                 {
-                    if (value != null)
-                        Citizen.CategoryId = value.CategoryId;
+                    Citizen.CategoryId = value.CategoryId;
                 }
             }
         }
@@ -112,6 +111,8 @@ namespace SubsidySystem.ViewModels
 
         private async Task SaveAsync()
         {
+            if (!CanSave) return;
+
             IsSaving = true;
             StatusMessage = "Сохранение...";
 
@@ -120,16 +121,27 @@ namespace SubsidySystem.ViewModels
                 Citizen.CreatedAt = DateTime.UtcNow;
 
                 await _citizenRepository.AddAsync(Citizen);
-                await _citizenRepository.SaveChangesAsync();
+                var result = await _citizenRepository.SaveChangesAsync();
 
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (result)
                 {
-                    StatusMessage = $"Заявитель {Citizen.LastName} {Citizen.FirstName} успешно зарегистрирован!";
-                    MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                });
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = $"Заявитель {Citizen.LastName} {Citizen.FirstName} успешно зарегистрирован!";
+                        MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    });
 
-                Citizen = new Citizen();
-                SelectedCategory = null;
+                    Citizen = new Citizen();
+                    SelectedCategory = null;
+                }
+                else
+                {
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = "Ошибка при сохранении в базу данных";
+                        MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    });
+                }
             }
             catch (Exception ex)
             {

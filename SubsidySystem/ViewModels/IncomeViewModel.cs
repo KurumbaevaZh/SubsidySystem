@@ -361,15 +361,25 @@ namespace SubsidySystem.ViewModels
                     else
                         _incomeRepository.Update(income);
                 }
-                await _incomeRepository.SaveChangesAsync();
+                var result = await _incomeRepository.SaveChangesAsync();
 
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (result)
                 {
-                    StatusMessage = $"Сохранено {Incomes.Count} записей о доходах!";
-                    MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                });
-
-                await LoadIncomesAsync();
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = $"Сохранено {Incomes.Count} записей о доходах!";
+                        MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    });
+                    await LoadIncomesAsync();
+                }
+                else
+                {
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = "Ошибка при сохранении в базу данных";
+                        MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    });
+                }
             }
             catch (Exception ex)
             {

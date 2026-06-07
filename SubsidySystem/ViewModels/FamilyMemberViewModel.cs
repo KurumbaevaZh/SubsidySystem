@@ -221,16 +221,26 @@ namespace SubsidySystem.ViewModels
                 };
 
                 await _familyMemberRepository.AddAsync(newMember);
-                await _familyMemberRepository.SaveChangesAsync();
+                var result = await _familyMemberRepository.SaveChangesAsync();
 
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (result)
                 {
-                    StatusMessage = "Член семьи успешно добавлен!";
-                    MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                });
-
-                ClearForm();
-                await LoadFamilyMembersAsync();
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = "Член семьи успешно добавлен!";
+                        MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    });
+                    ClearForm();
+                    await LoadFamilyMembersAsync();
+                }
+                else
+                {
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = "Ошибка при сохранении в базу данных";
+                        MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    });
+                }
             }
             catch (Exception ex)
             {
@@ -266,16 +276,18 @@ namespace SubsidySystem.ViewModels
                 SelectedFamilyMember.UpdatedAt = DateTime.UtcNow;
 
                 _familyMemberRepository.Update(SelectedFamilyMember);
-                await _familyMemberRepository.SaveChangesAsync();
+                var result = await _familyMemberRepository.SaveChangesAsync();
 
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (result)
                 {
-                    StatusMessage = "Данные успешно обновлены!";
-                    MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                });
-
-                ClearForm();
-                await LoadFamilyMembersAsync();
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = "Данные успешно обновлены!";
+                        MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    });
+                    ClearForm();
+                    await LoadFamilyMembersAsync();
+                }
             }
             catch (Exception ex)
             {
@@ -306,16 +318,18 @@ namespace SubsidySystem.ViewModels
             try
             {
                 _familyMemberRepository.Delete(SelectedFamilyMember);
-                await _familyMemberRepository.SaveChangesAsync();
+                var deleted = await _familyMemberRepository.SaveChangesAsync();
 
-                await Application.Current.Dispatcher.InvokeAsync(() =>
+                if (deleted)
                 {
-                    StatusMessage = "Член семьи удален!";
-                    MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                });
-
-                ClearForm();
-                await LoadFamilyMembersAsync();
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        StatusMessage = "Член семьи удален!";
+                        MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    });
+                    ClearForm();
+                    await LoadFamilyMembersAsync();
+                }
             }
             catch (Exception ex)
             {
