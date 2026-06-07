@@ -39,7 +39,6 @@ namespace SubsidySystem.ViewModels
             _incomeTypeRepository = incomeTypeRepository;
             _incomeRepository = incomeRepository;
 
-            // Инициализация команд
             LoadCitizensCommand = new RelayCommand(async _ => await LoadCitizensAsync());
             LoadFamilyMembersCommand = new RelayCommand(async _ => await LoadFamilyMembersAsync(), _ => SelectedCitizen != null);
             LoadIncomeTypesCommand = new RelayCommand(async _ => await LoadIncomeTypesAsync());
@@ -48,7 +47,6 @@ namespace SubsidySystem.ViewModels
             DeleteIncomeCommand = new RelayCommand(async param => await DeleteIncomeAsync(param), _ => SelectedIncome != null);
             SaveAllCommand = new RelayCommand(async _ => await SaveAllAsync(), _ => Incomes.Any());
 
-            // Загрузка данных с использованием Dispatcher
             Task.Run(async () => {
                 await LoadCitizensAsync();
                 await LoadIncomeTypesAsync();
@@ -94,12 +92,9 @@ namespace SubsidySystem.ViewModels
             get => _selectedFamilyMember;
             set
             {
-                if (SetField(ref _selectedFamilyMember, value))
+                if (SetField(ref _selectedFamilyMember, value) && value != null)
                 {
-                    if (value != null)
-                    {
-                        LoadIncomesCommand.Execute(null);
-                    }
+                    LoadIncomesCommand.Execute(null);
                 }
             }
         }
@@ -115,10 +110,9 @@ namespace SubsidySystem.ViewModels
             get => _selectedIncomeType;
             set
             {
-                if (SetField(ref _selectedIncomeType, value))
+                if (SetField(ref _selectedIncomeType, value) && value != null)
                 {
-                    if (value != null)
-                        Income.IncomeTypeId = value.IncomeTypeId;
+                    Income.IncomeTypeId = value.IncomeTypeId;
                 }
             }
         }
@@ -179,7 +173,6 @@ namespace SubsidySystem.ViewModels
                 });
 
                 var citizens = await _citizenRepository.GetAllAsync();
-
                 var previousCitizenId = SelectedCitizen?.CitizenId;
 
                 await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -187,18 +180,12 @@ namespace SubsidySystem.ViewModels
                     Citizens.Clear();
                     foreach (var c in citizens.OrderBy(c => c.LastName))
                         Citizens.Add(c);
-                });
 
-                if (previousCitizenId.HasValue)
-                {
-                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    if (previousCitizenId.HasValue)
                     {
                         SelectedCitizen = Citizens.FirstOrDefault(c => c.CitizenId == previousCitizenId.Value);
-                    });
-                }
+                    }
 
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
                     StatusMessage = $"Загружено {Citizens.Count} граждан";
                 });
             }
@@ -322,7 +309,8 @@ namespace SubsidySystem.ViewModels
                     Amount = Income.Amount,
                     PeriodStart = Income.PeriodStart,
                     PeriodEnd = Income.PeriodEnd,
-                    DocumentName = Income.DocumentName
+                    DocumentName = Income.DocumentName,
+                    CreatedAt = DateTime.UtcNow
                 };
 
                 await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -387,7 +375,7 @@ namespace SubsidySystem.ViewModels
             {
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    StatusMessage = $"Ошибка сохранения: {ex.Message}";
+                    StatusMessage = $"Ошибка сохранения: {ex.InnerException?.Message ?? ex.Message}";
                     MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 });
             }

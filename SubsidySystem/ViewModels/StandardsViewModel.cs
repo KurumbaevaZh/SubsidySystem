@@ -76,10 +76,7 @@ namespace SubsidySystem.ViewModels
             }
         }
 
-        public ObservableCollection<string> StandardTypes
-        {
-            get => _standardTypes;
-        }
+        public ObservableCollection<string> StandardTypes => _standardTypes;
 
         public bool IsLoading
         {
@@ -134,6 +131,14 @@ namespace SubsidySystem.ViewModels
             IsLoading = true;
             try
             {
+                // Если дата не задана, устанавливаем текущую
+                if (Standard.ValidFrom == default)
+                {
+                    Standard.ValidFrom = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                }
+
+                Standard.CreatedAt = DateTime.UtcNow;
+
                 await _standardRepository.AddAsync(Standard);
                 await _standardRepository.SaveChangesAsync();
 
@@ -144,7 +149,7 @@ namespace SubsidySystem.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Ошибка: {ex.Message}";
+                StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
                 MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
@@ -165,6 +170,7 @@ namespace SubsidySystem.ViewModels
                 SelectedStandard.TerritoryCode = Standard.TerritoryCode;
                 SelectedStandard.ValidFrom = Standard.ValidFrom;
                 SelectedStandard.ValidTo = Standard.ValidTo;
+                SelectedStandard.UpdatedAt = DateTime.UtcNow;
 
                 _standardRepository.Update(SelectedStandard);
                 await _standardRepository.SaveChangesAsync();
@@ -176,7 +182,7 @@ namespace SubsidySystem.ViewModels
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Ошибка: {ex.Message}";
+                StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
                 MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
@@ -202,10 +208,11 @@ namespace SubsidySystem.ViewModels
                 await LoadStandardsAsync();
                 ClearForm();
                 StatusMessage = "Норматив удалён!";
+                MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Ошибка: {ex.Message}";
+                StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
                 MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally

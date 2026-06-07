@@ -4,18 +4,6 @@ namespace SubsidySystem.Services
 {
     public interface ISubsidyCalculationService
     {
-        /// <summary>
-        /// Расчет субсидии
-        /// </summary>
-        /// <param name="citizenId">Идентификатор заявителя</param>
-        /// <param name="year">Год расчета</param>
-        /// <param name="month">Месяц расчета</param>
-        /// <param name="totalFamilyIncome">Совокупный доход семьи за расчетный период</param>
-        /// <param name="familySize">Количество членов семьи</param>
-        /// <param name="workingAgeCount">Количество трудоспособных</param>
-        /// <param name="pensionerCount">Количество пенсионеров</param>
-        /// <param name="childCount">Количество детей</param>
-        /// <returns>Результат расчета субсидии</returns>
         Task<SubsidyCalculationResult> CalculateSubsidyAsync(
             int citizenId,
             int year,
@@ -26,15 +14,9 @@ namespace SubsidySystem.Services
             int pensionerCount,
             int childCount);
 
-        /// <summary>
-        /// Полный расчет субсидии с получением данных из базы
-        /// </summary>
         Task<SubsidyCalculationResult> CalculateFullSubsidyAsync(int citizenId, int year, int month);
     }
 
-    /// <summary>
-    /// Результат расчета субсидии
-    /// </summary>
     public class SubsidyCalculationResult
     {
         public decimal SubsidyAmount { get; set; }

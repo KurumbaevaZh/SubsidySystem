@@ -31,7 +31,7 @@ namespace SubsidySystem.ViewModels
             CancelCommand = new RelayCommand(_ => Cancel());
             LoadCategoriesCommand = new RelayCommand(async _ => await LoadCategoriesAsync());
 
-            LoadCategoriesCommand.Execute(null);
+            Task.Run(async () => await LoadCategoriesAsync());
         }
 
         public Citizen Citizen
@@ -85,14 +85,28 @@ namespace SubsidySystem.ViewModels
         {
             try
             {
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    StatusMessage = "Загрузка категорий...";
+                });
+
                 var categories = await _categoryRepository.GetAllAsync();
-                Categories.Clear();
-                foreach (var cat in categories)
-                    Categories.Add(cat);
+
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    Categories.Clear();
+                    foreach (var cat in categories)
+                        Categories.Add(cat);
+                    StatusMessage = $"Загружено {Categories.Count} категорий";
+                });
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Ошибка загрузки категорий: {ex.Message}";
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    StatusMessage = $"Ошибка загрузки категорий: {ex.Message}";
+                    MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
             }
         }
 
@@ -103,20 +117,27 @@ namespace SubsidySystem.ViewModels
 
             try
             {
-                Citizen.CreatedAt = DateTime.Now;
+                Citizen.CreatedAt = DateTime.UtcNow;
+
                 await _citizenRepository.AddAsync(Citizen);
                 await _citizenRepository.SaveChangesAsync();
 
-                StatusMessage = $"Заявитель {Citizen.LastName} {Citizen.FirstName} успешно зарегистрирован!";
-                MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    StatusMessage = $"Заявитель {Citizen.LastName} {Citizen.FirstName} успешно зарегистрирован!";
+                    MessageBox.Show(StatusMessage, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                });
 
                 Citizen = new Citizen();
                 SelectedCategory = null;
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Ошибка: {ex.Message}";
-                MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
+                    MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
             }
             finally
             {

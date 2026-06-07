@@ -36,7 +36,6 @@ namespace SubsidySystem.Services
             _subsidyRepository = subsidyRepository;
         }
 
-        // РЕАЛИЗАЦИЯ МЕТОДА CalculateSubsidyAsync
         public async Task<SubsidyCalculationResult> CalculateSubsidyAsync(
             int citizenId,
             int year,
@@ -92,7 +91,6 @@ namespace SubsidySystem.Services
             };
         }
 
-        // РЕАЛИЗАЦИЯ МЕТОДА CalculateFullSubsidyAsync
         public async Task<SubsidyCalculationResult> CalculateFullSubsidyAsync(int citizenId, int year, int month)
         {
             var calculationDate = new DateTime(year, month, 1);
@@ -143,6 +141,7 @@ namespace SubsidySystem.Services
 
             try
             {
+                // Проверка существующего расчета
                 var existingCalculations = await _subsidyRepository
                     .FindAsync(s => s.CitizenId == citizenId && s.Year == year && s.Month == month);
 
@@ -177,7 +176,8 @@ namespace SubsidySystem.Services
                         MaxAllowedShare = result.MaxAllowedShare,
                         SubsidyAmount = result.SubsidyAmount,
                         Status = "назначено",
-                        Notes = result.CalculationFormula
+                        Notes = result.CalculationFormula,
+                        CreatedAt = DateTime.UtcNow
                     };
 
                     await _subsidyRepository.AddAsync(calculation);
@@ -187,8 +187,11 @@ namespace SubsidySystem.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при сохранении расчета: {ex.InnerException?.Message ?? ex.Message}",
-                    "Ошибка БД", MessageBoxButton.OK, MessageBoxImage.Error);
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    MessageBox.Show($"Ошибка при сохранении расчета: {ex.InnerException?.Message ?? ex.Message}",
+                        "Ошибка БД", MessageBoxButton.OK, MessageBoxImage.Error);
+                });
                 throw;
             }
 
@@ -271,5 +274,6 @@ namespace SubsidySystem.Services
 
             return DEFAULT_MAX_ALLOWED_SHARE_VALUE;
         }
+
     }
 }

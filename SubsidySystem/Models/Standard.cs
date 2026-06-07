@@ -29,12 +29,12 @@ namespace SubsidySystem.Models
         public DateTime ValidFrom { get; set; }
 
         [Column("valid_to", TypeName = "date")]
-        public DateTime? ValidTo { get; set; }
+        public DateTime? ValidTo { get; set; }  // nullable
 
         [Column("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Column("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }  // nullable
     }
 }

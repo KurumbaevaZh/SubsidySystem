@@ -58,13 +58,12 @@ namespace SubsidySystem.Models
         public string? Notes { get; set; }
 
         [Column("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        // Навигационные свойства
         [ForeignKey("CitizenId")]
-        public virtual Citizen Citizen { get; set; } = null!;
+        public virtual Citizen? Citizen { get; set; }
 
         [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set; }
     }
 }

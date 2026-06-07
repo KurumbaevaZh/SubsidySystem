@@ -41,18 +41,16 @@ namespace SubsidySystem.Models
         [MaxLength(20)]
         public string? Status { get; set; } = "формируется";
 
-        // НОВЫЕ ПОЛЯ - добавьте их
         [Column("approved_by")]
         [MaxLength(100)]
         public string? ApprovedBy { get; set; }
 
         [Column("approved_date", TypeName = "date")]
-        public DateTime? ApprovedDate { get; set; }
+        public DateTime? ApprovedDate { get; set; }  // nullable - может быть null
 
         [Column("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }  // не nullable
 
-        // Навигационное свойство
         public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }

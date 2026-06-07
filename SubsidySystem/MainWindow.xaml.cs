@@ -211,8 +211,10 @@ namespace SubsidySystem
                 }
 
                 UpdateStatus("Открытие окна управления справочниками...");
-                MessageBox.Show("Функция находится в разработке", "Информация",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                var viewModel = App.ServiceProvider.GetRequiredService<DictionariesViewModel>();
+                var window = new DictionariesWindow(viewModel);
+                window.Owner = this;
+                window.ShowDialog();
                 UpdateStatus("Готов к работе");
             }
             catch (Exception ex)
@@ -238,8 +240,10 @@ namespace SubsidySystem
                 }
 
                 UpdateStatus("Открытие окна управления пользователями...");
-                MessageBox.Show("Функция находится в разработке", "Информация",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                var viewModel = App.ServiceProvider.GetRequiredService<UsersViewModel>();
+                var window = new UsersWindow(viewModel);
+                window.Owner = this;
+                window.ShowDialog();
                 UpdateStatus("Готов к работе");
             }
             catch (Exception ex)
@@ -265,8 +269,10 @@ namespace SubsidySystem
                 }
 
                 UpdateStatus("Открытие окна управления нормативами...");
-                MessageBox.Show("Функция находится в разработке", "Информация",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                var viewModel = App.ServiceProvider.GetRequiredService<StandardsViewModel>();
+                var window = new StandardsWindow(viewModel);
+                window.Owner = this;
+                window.ShowDialog();
                 UpdateStatus("Готов к работе");
             }
             catch (Exception ex)
@@ -321,8 +327,10 @@ namespace SubsidySystem
                 }
 
                 UpdateStatus("Открытие окна реестров выплат...");
-                MessageBox.Show("Функция находится в разработке", "Информация",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                var viewModel = App.ServiceProvider.GetRequiredService<ApproveRegistriesViewModel>();
+                var window = new ApproveRegistriesWindow(viewModel);
+                window.Owner = this;
+                window.ShowDialog();
                 UpdateStatus("Готов к работе");
             }
             catch (Exception ex)
@@ -332,5 +340,6 @@ namespace SubsidySystem
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
     }
 }

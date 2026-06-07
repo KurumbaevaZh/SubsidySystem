@@ -22,7 +22,6 @@ namespace SubsidySystem.ViewModels
         private bool _isSaving;
         private string _statusMessage = string.Empty;
 
-        // Список возможных родственных связей
         private ObservableCollection<string> _relationships = new()
         {
             "Супруг", "Супруга", "Сын", "Дочь", "Отец", "Мать",
@@ -90,33 +89,26 @@ namespace SubsidySystem.ViewModels
             get => _selectedFamilyMember;
             set
             {
-                if (SetField(ref _selectedFamilyMember, value))
+                if (SetField(ref _selectedFamilyMember, value) && value != null)
                 {
-                    if (value != null)
+                    FamilyMember = new FamilyMember
                     {
-                        // Копируем выбранного члена семьи в форму для редактирования
-                        FamilyMember = new FamilyMember
-                        {
-                            MemberId = value.MemberId,
-                            CitizenId = value.CitizenId,
-                            LastName = value.LastName,
-                            FirstName = value.FirstName,
-                            MiddleName = value.MiddleName,
-                            BirthDate = value.BirthDate,
-                            Relationship = value.Relationship,
-                            IsStudent = value.IsStudent,
-                            Snils = value.Snils,
-                            Notes = value.Notes
-                        };
-                    }
+                        MemberId = value.MemberId,
+                        CitizenId = value.CitizenId,
+                        LastName = value.LastName,
+                        FirstName = value.FirstName,
+                        MiddleName = value.MiddleName,
+                        BirthDate = value.BirthDate,
+                        Relationship = value.Relationship,
+                        IsStudent = value.IsStudent,
+                        Snils = value.Snils,
+                        Notes = value.Notes
+                    };
                 }
             }
         }
 
-        public ObservableCollection<string> Relationships
-        {
-            get => _relationships;
-        }
+        public ObservableCollection<string> Relationships => _relationships;
 
         public bool IsSaving
         {
@@ -160,7 +152,6 @@ namespace SubsidySystem.ViewModels
                     Citizens.Clear();
                     foreach (var c in citizens.OrderBy(c => c.LastName))
                         Citizens.Add(c);
-
                     StatusMessage = $"Загружено {Citizens.Count} граждан";
                 });
             }
@@ -193,7 +184,6 @@ namespace SubsidySystem.ViewModels
                     FamilyMembers.Clear();
                     foreach (var m in members.OrderBy(m => m.Relationship))
                         FamilyMembers.Add(m);
-
                     StatusMessage = $"Загружено {FamilyMembers.Count} членов семьи";
                 });
             }
@@ -227,7 +217,7 @@ namespace SubsidySystem.ViewModels
                     IsStudent = FamilyMember.IsStudent,
                     Snils = FamilyMember.Snils,
                     Notes = FamilyMember.Notes,
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 };
 
                 await _familyMemberRepository.AddAsync(newMember);
@@ -246,7 +236,7 @@ namespace SubsidySystem.ViewModels
             {
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    StatusMessage = $"Ошибка: {ex.Message}";
+                    StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
                     MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 });
             }
@@ -273,7 +263,7 @@ namespace SubsidySystem.ViewModels
                 SelectedFamilyMember.IsStudent = FamilyMember.IsStudent;
                 SelectedFamilyMember.Snils = FamilyMember.Snils;
                 SelectedFamilyMember.Notes = FamilyMember.Notes;
-                SelectedFamilyMember.UpdatedAt = DateTime.Now;
+                SelectedFamilyMember.UpdatedAt = DateTime.UtcNow;
 
                 _familyMemberRepository.Update(SelectedFamilyMember);
                 await _familyMemberRepository.SaveChangesAsync();
@@ -291,7 +281,7 @@ namespace SubsidySystem.ViewModels
             {
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    StatusMessage = $"Ошибка: {ex.Message}";
+                    StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
                     MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 });
             }
@@ -331,7 +321,7 @@ namespace SubsidySystem.ViewModels
             {
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    StatusMessage = $"Ошибка: {ex.Message}";
+                    StatusMessage = $"Ошибка: {ex.InnerException?.Message ?? ex.Message}";
                     MessageBox.Show(StatusMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 });
             }

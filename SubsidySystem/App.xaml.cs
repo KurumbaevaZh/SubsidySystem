@@ -40,25 +40,27 @@ namespace SubsidySystem
 
             // ViewModels
             services.AddTransient<CitizenRegistrationViewModel>();
+            services.AddTransient<FamilyMemberViewModel>();
             services.AddTransient<IncomeViewModel>();
             services.AddTransient<SubsidyCalculationViewModel>();
             services.AddTransient<ReportViewModel>();
-            services.AddTransient<FamilyMemberViewModel>();
             services.AddTransient<ApproveRegistriesViewModel>();
             services.AddTransient<UsersViewModel>();
             services.AddTransient<StandardsViewModel>();
+            services.AddTransient<DictionariesViewModel>();
 
             // Окна
             services.AddSingleton<LoginWindow>();
             services.AddSingleton<MainWindow>();
             services.AddTransient<CitizenRegistrationWindow>();
+            services.AddTransient<FamilyMemberWindow>();
             services.AddTransient<IncomeWindow>();
             services.AddTransient<SubsidyCalculationWindow>();
             services.AddTransient<ReportWindow>();
-            services.AddTransient<FamilyMemberWindow>();
             services.AddTransient<ApproveRegistriesWindow>();
             services.AddTransient<UsersWindow>();
             services.AddTransient<StandardsWindow>();
+            services.AddTransient<DictionariesWindow>();
 
             ServiceProvider = services.BuildServiceProvider();
 

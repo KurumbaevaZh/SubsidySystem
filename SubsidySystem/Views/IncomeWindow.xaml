@@ -85,21 +85,22 @@
         <GroupBox Header="Список доходов" Grid.Row="3" Margin="0,0,0,10">
             <DataGrid ItemsSource="{Binding Incomes}" AutoGenerateColumns="False"
                       SelectedItem="{Binding SelectedIncome}" CanUserAddRows="False">
+                <!-- Исправленные колонки DataGrid -->
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Вид дохода" Binding="{Binding IncomeType.IncomeTypeName}" Width="150"/>
-                    <DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat={}{0:N2}}" Width="100"/>
-                    <DataGridTextColumn Header="Период с" Binding="{Binding PeriodStart, StringFormat={}{0:dd.MM.yyyy}}" Width="100"/>
-                    <DataGridTextColumn Header="Период по" Binding="{Binding PeriodEnd, StringFormat={}{0:dd.MM.yyyy}}" Width="100"/>
+                    <DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=N2}" Width="100"/>
+                    <DataGridTextColumn Header="Период с" Binding="{Binding PeriodStart, StringFormat=dd.MM.yyyy}" Width="100"/>
+                    <DataGridTextColumn Header="Период по" Binding="{Binding PeriodEnd, StringFormat=dd.MM.yyyy}" Width="100"/>
                     <DataGridTemplateColumn Header="Удалить" Width="60">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="X" 
-                                        Command="{Binding DataContext.DeleteIncomeCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
-                                        CommandParameter="{Binding}" 
-                                        Background="Red" 
-                                        Foreground="White" 
-                                        Width="40"
-                                        Height="25"/>
+                        Command="{Binding DataContext.DeleteIncomeCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                        CommandParameter="{Binding}" 
+                        Background="Red" 
+                        Foreground="White" 
+                        Width="40"
+                        Height="25"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

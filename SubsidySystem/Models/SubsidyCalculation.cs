@@ -40,7 +40,7 @@ namespace SubsidySystem.Models
         public decimal LivingWage { get; set; }
 
         [Column("correction_factor")]
-        public decimal? CorrectionFactor { get; set; }
+        public decimal? CorrectionFactor { get; set; }  // nullable
 
         [Required]
         [Column("housing_standard")]
@@ -63,10 +63,9 @@ namespace SubsidySystem.Models
         public string? Notes { get; set; }
 
         [Column("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        // Навигационные свойства
         [ForeignKey("CitizenId")]
-        public virtual Citizen Citizen { get; set; } = null!;
+        public virtual Citizen? Citizen { get; set; }
     }
 }

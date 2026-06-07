@@ -41,7 +41,7 @@ namespace SubsidySystem.Models
         public string? PaymentDetails { get; set; }
 
         [Column("payment_date", TypeName = "date")]
-        public DateTime? PaymentDate { get; set; }
+        public DateTime? PaymentDate { get; set; }  // nullable
 
         [Column("status")]
         [MaxLength(20)]
@@ -51,16 +51,15 @@ namespace SubsidySystem.Models
         public string? Notes { get; set; }
 
         [Column("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Column("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }  // nullable
 
-        // Навигационные свойства
         [ForeignKey("RegistryId")]
-        public virtual PaymentRegistry Registry { get; set; } = null!;
+        public virtual PaymentRegistry? Registry { get; set; }
 
         [ForeignKey("CitizenId")]
-        public virtual Citizen Citizen { get; set; } = null!;
+        public virtual Citizen? Citizen { get; set; }
     }
 }
